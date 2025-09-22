@@ -1,51 +1,69 @@
 # toDoApp.py
 
-tasks = []
+tasksarray = []
 def addtask(task):
+    # Add a task if it's not empty
     if task.strip() == "":
         print("Task cannot be empty!")
     else:
-        tasks.append(task)
-        print("Task added!")
+        tasksarray.append(task)
+        print("Succesfully added task!")
+        
+        
 def showTasks():
-    if len(tasks) == 0:
-        print("No tasks yet")
+    # Show all tasks through for loop
+    if len(tasksarray) == 0:
+        print("No tasks yet!")
     else:
-        print("Tasks: ")
-        for i in range(len(tasks)):
-            print(str(i+1) + ". " + tasks[i].title())
+        print("These are your remaining tasks: ")
+        for i in range(len(tasksarray)):
+            print(str(i+1) + ". " + tasksarray[i].title())
+            
+            
 def removetask(tasknumber):
-    if tasknumber < 1 or tasknumber > len(tasks):
+     # Remove a task by number given through user input
+    if tasknumber < 1 or tasknumber > len(tasksarray):
         print("Invalid task number!")
     else:
-        tasks.pop(tasknumber - 1)
+        tasksarray.pop(tasknumber - 1)
         print("Task removed!")
+        
+        
 def main():
+    # Main menu loop using while
     while True:
-        print()
+        print("TO DO APPPLICATION!")
+        print("=====================================")
         print("1 Add Task")
         print("2.Show Tasks")
         print("3.Remove Task")
         print("4- Exit")
-        ch = input("Enter choice: ")
+        choice = input("Enter choice: ")
         print()
-        if ch == "1":
-            t = input("Enter task: ")
-            addtask(t)
-        elif ch == "2":
+        
+        if choice == "1":
+            # Ask the user to input a new task
+            task = input("Please enter the task: ")
+            addtask(task)
+            print("\n")
+        elif choice == "2":
             showTasks()
-        elif ch == "3":
-            if len(tasks) == 0:
-                print("No tasks to remove!")
+        elif choice == "3":
+            # Remove a task if tasks exist
+            if len(tasksarray) == 0:
+                print("No tasks to remove!\n")
                 continue
             try:
-                n = int(input("Enter task no to remove: "))
-                removetask(n)
+                num = int(input("Enter task no to remove: "))
+                removetask(num)
+                print("\n")
             except ValueError:
-                print("Invalid input! Enter a number.")
-        elif ch == "4":
+                 # Handles non-integer input
+                print("Invalid input! Enter a number.\n")
+        elif choice == "4":
             break
         else:
+             # Handle invalid menu option
             print("Wrong choice!!")
 
 main()
