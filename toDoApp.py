@@ -11,8 +11,9 @@ def showTasks():
     if len(tasks) == 0:
         print("No tasks yet")
     else:
+        print("Tasks: ")
         for i in range(len(tasks)):
-            print(i + 1, ".", tasks[i])
+            print(str(i+1) + ". " + tasks[i].title())
 def removetask(tasknumber):
     if tasknumber < 1 or tasknumber > len(tasks):
         print("Invalid task number!")
@@ -21,11 +22,13 @@ def removetask(tasknumber):
         print("Task removed!")
 def main():
     while True:
-        print("2.Show Tasks")
+        print()
         print("1 Add Task")
+        print("2.Show Tasks")
         print("3.Remove Task")
         print("4- Exit")
         ch = input("Enter choice: ")
+        print()
         if ch == "1":
             t = input("Enter task: ")
             addtask(t)
